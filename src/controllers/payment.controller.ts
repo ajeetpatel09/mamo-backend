@@ -12,6 +12,15 @@ class PaymentController {
       console.log(error);
     }
   }
+
+  async getPaymentInfo(req: Request, res: Response) {
+    try {
+      const result = await paymentService.getPaymentInfo(req.params.chargeUID);
+      return res.status(200).send(buildResponse(result, "success", null));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export default PaymentController;
